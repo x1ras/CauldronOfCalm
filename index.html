@@ -15,14 +15,14 @@
         }
 
         header {
-            background-color: #162447;
+            background-color: #0B0914;
             padding: 20px 0;
             text-align: center;
             border-bottom: 1px solid #b8a6d9;
         }
 
         .logo {
-            max-width: 200px;
+            max-width: 300px;
             margin-bottom: 10px;
         }
 
@@ -214,19 +214,19 @@
                 <div class="service-card">
                     <h3>Tranquil Touch Baby Massage</h3>
                     <p>A gentle and soothing massage for babies, promoting relaxation, bonding, and relief from colic and discomfort. A calm experience for both baby and parent.</p>
-                    <p class="price">$75 / 45-minute session</p>
+                    <p class="price">£75 / 45-minute session</p>
                 </div>
                 <div class="service-card">
                     <h3>Serenity Spell Adult Massage</h3>
                     <p>A deeply relaxing massage for adults, designed to melt away stress, ease muscle tension, and restore your inner balance. A magical escape from the everyday.</p>
-                    <p class="price">$120 / 60-minute session</p>
+                    <p class="price">£120 / 60-minute session</p>
                 </div>
             </div>
         </section>
 
         <section id="booking">
             <h2>Book Your Appointment</h2>
-            <form>
+            <form id="bookingForm">
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -255,6 +255,25 @@
         <p>&copy; 2025 Cauldron of Calm. All rights reserved.</p>
         <p>Contact us at: <a href="mailto:contact@cauldronofcalm.com" style="color: #b8a6d9;">contact@cauldronofcalm.com</a></p>
     </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+    // Initialize EmailJS with your User ID
+        emailjs.init('Aal1K3nS1GQW0hmIq');
+
+    // Listen for form submission
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Send the form data using EmailJS
+        emailjs.sendForm('service_qmqousx', 'template_5tfu7oc', this)
+            .then(function() {
+                alert('Booking request sent successfully!');
+            }, function(error) {
+                alert('Failed to send booking request: ' + JSON.stringify(error));
+            });
+    });
+</script>
 
 </body>
 </html>
